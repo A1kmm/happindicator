@@ -1,10 +1,10 @@
 Name:           happindicator
-Version:        0.0.2
+Version:        0.0.3
 License:        LGPL-2.1
 License-file:   COPYING
 Copyright:      (c) 2011 the authors
 Author:         Andrew Miller <andrew@amxl.com>; some parts derived from Gtk2hs by Axel Simon, Duncan Coutts and many others
-Maintainer:     gtk2hs-devel@list.sourceforge.net
+Maintainer:     gtk2hs-devel@lists.sourceforge.net
 Build-Type:     Custom
 Cabal-Version:  >= 1.6.0
 Stability:      provisional
