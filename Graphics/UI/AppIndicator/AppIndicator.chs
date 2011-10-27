@@ -136,7 +136,7 @@ appIndicatorBuildMenuFromDesktop self desktopFile desktopProfile =
 -- | This function retrieves the Application Indicator menu.
 appIndicatorGetMenu :: AppIndicatorClass self => self -> IO Menu
 appIndicatorGetMenu self =
-  wrapNewGObject mkMenu $ {# call app_indicator_get_menu #} (toAppIndicator self)
+  makeNewGObject mkMenu $ {# call app_indicator_get_menu #} (toAppIndicator self)
 
 -- | This function sets the Application Indicator menu.
 appIndicatorSetMenu :: (AppIndicatorClass self, MenuClass menu) => self -> menu -> IO ()
