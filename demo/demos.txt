@@ -1,0 +1,1 @@
+1. Simple appindicator example: SimpleAppIndicatorExample.hs
