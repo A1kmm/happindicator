@@ -58,6 +58,9 @@ module Graphics.UI.AppIndicator.AppIndicator (
   appIndicatorBuildMenuFromDesktop,
   appIndicatorGetMenu,
   appIndicatorSetMenu,
+  appIndicatorGetStatus,
+  appIndicatorSetStatus,
+  appIndicatorGetCategory,
   
 -- * Attributes
   appIndicatorAttentionIconDesc,
@@ -141,6 +144,19 @@ appIndicatorSetMenu self menu =
   {# call app_indicator_set_menu #}
     (toAppIndicator self) (toMenu menu)
 
+appIndicatorGetStatus :: AppIndicatorClass self => self -> IO AppIndicatorStatus
+appIndicatorGetStatus self =
+  liftM (toEnum . fromIntegral) $ {# call app_indicator_get_status #} (toAppIndicator self)
+
+appIndicatorSetStatus :: AppIndicatorClass self => self -> AppIndicatorStatus -> IO ()
+appIndicatorSetStatus self stat =
+  {# call app_indicator_set_status #}
+    (toAppIndicator self) ((fromIntegral . fromEnum) stat)
+
+appIndicatorGetCategory :: AppIndicatorClass self => self -> IO AppIndicatorCategory
+appIndicatorGetCategory self =
+  liftM (toEnum . fromIntegral) $ {# call app_indicator_get_category #} (toAppIndicator self)
+
 -- * Attributes
 
 -- | If the indicator sets it's status to APP_INDICATOR_STATUS_ATTENTION then this textual description of the icon shown. 
@@ -152,9 +168,8 @@ appIndicatorAttentionIconName :: AppIndicatorClass self => Attr self (Maybe Stri
 appIndicatorAttentionIconName = newAttrFromMaybeStringProperty "attention-icon-name"
 
 -- | The type of indicator that this represents. Please don't use 'Other'. Defaults to 'ApplicationStatus'.
-appIndicatorCategory :: AppIndicatorClass self => Attr self AppIndicatorCategory
-appIndicatorCategory = newAttrFromEnumProperty "category"
-                          {# call pure unsafe app_indicator_category_get_type #}
+appIndicatorCategory :: AppIndicatorClass self => Attr self (Maybe String)
+appIndicatorCategory = newAttrFromMaybeStringProperty "category"
 
 -- | Pretty simple, TRUE if we have a reasonable expectation of being displayed through this object. You should hide your TrayIcon if so. 
 appIndicatorConnected :: AppIndicatorClass self => ReadAttr self Bool
@@ -189,9 +204,8 @@ appIndicatorOrderingIndex :: AppIndicatorClass self => Attr self Int
 appIndicatorOrderingIndex = newAttrFromUIntProperty "ordering-index"
 
 -- | Whether the indicator is shown or requests attention. Defaults to 'Passive'.
-appIndicatorStatus :: AppIndicatorClass self => Attr self AppIndicatorStatus
-appIndicatorStatus = newAttrFromEnumProperty "status"
-                          {# call pure unsafe app_indicator_status_get_type #}
+appIndicatorStatus :: AppIndicatorClass self => Attr self (Maybe String)
+appIndicatorStatus = newAttrFromMaybeStringProperty "status"
 
 -- * Signals
 

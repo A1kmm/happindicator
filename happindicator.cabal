@@ -15,7 +15,7 @@ Extra-Source-Files: Gtk2HsSetup.hs
                     marshal.list
                     hierarchy.list
                     appindicator-plus-types.h                    
-                    
+
 x-Types-File:       Graphics/UI/AppIndicator/Types.chs
 x-Types-ModName:    Graphics.UI.AppIndicator.Types
 x-Types-Forward:    *System.Glib.GObject

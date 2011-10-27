@@ -1,6 +1,6 @@
 module Graphics.UI.AppIndicator.Enums (
-  AppIndicatorCategory,
-  AppIndicatorStatus
+  AppIndicatorCategory(..),
+  AppIndicatorStatus(..)
 )
 where
 
