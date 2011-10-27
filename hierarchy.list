@@ -1,0 +1,25 @@
+# This list is the result of a copy-and-paste from the AppIndicator hierarchy
+# html documentation. Deprecated widgets are uncommented. Some additional
+# object have been defined at the end of the copied list.
+
+# The Gtk prefix of every object is removed, the other prefixes are
+# kept.  The indentation implies the object hierarchy. In case the
+# type query function cannot be derived from the name or the type name
+# is different, an alternative name and type query function can be
+# specified by appending 'as typename, <query_func>'.  In case this
+# function is not specified, the <name> is converted to
+# gtk_<name'>_get_type where <name'> is <name> where each upperscore
+# letter is converted to an underscore and lowerletter. The underscore
+# is omitted if an upperscore letter preceeded: GtkHButtonBox ->
+# gtk_hbutton_box_get_type. The generation of a type can be
+# conditional by appending 'if <tag>'. Such types are only produces if
+# --tag=<tag> is given on the command line of TypeGenerator.
+
+# Before these conditions, two additional properties may be given:
+# * noDestr	: ignores the destructor given by the --destructor
+#		  command line argument and uses 'objectUnref'
+# * noEq	: do not make this type an instance of Eq; used
+#		  if a different equality instance is manually
+#		  defined later
+    GObject
+        AppIndicator
