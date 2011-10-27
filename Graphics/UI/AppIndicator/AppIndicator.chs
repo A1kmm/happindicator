@@ -144,15 +144,18 @@ appIndicatorSetMenu self menu =
   {# call app_indicator_set_menu #}
     (toAppIndicator self) (toMenu menu)
 
+-- | This function retrieves the current status of the Application Indicator.
 appIndicatorGetStatus :: AppIndicatorClass self => self -> IO AppIndicatorStatus
 appIndicatorGetStatus self =
   liftM (toEnum . fromIntegral) $ {# call app_indicator_get_status #} (toAppIndicator self)
 
+-- | This function set the status of the Application Indicator.
 appIndicatorSetStatus :: AppIndicatorClass self => self -> AppIndicatorStatus -> IO ()
 appIndicatorSetStatus self stat =
   {# call app_indicator_set_status #}
     (toAppIndicator self) ((fromIntegral . fromEnum) stat)
 
+-- | This function retrieves the category of the Application Indicator.
 appIndicatorGetCategory :: AppIndicatorClass self => self -> IO AppIndicatorCategory
 appIndicatorGetCategory self =
   liftM (toEnum . fromIntegral) $ {# call app_indicator_get_category #} (toAppIndicator self)
